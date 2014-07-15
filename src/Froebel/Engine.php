@@ -31,7 +31,7 @@ class Engine
             $keys = $hash->tokenize($data);
 
             foreach ($keys as $key) {
-                $this->storage->set($hash->getName(), $key, $data);
+                $this->storage->set($hash->name, $key, $data);
             }
         }
     }
