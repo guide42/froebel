@@ -13,10 +13,6 @@ class Engine
 
     public function __construct($hashes, Storage $storage)
     {
-        foreach ($hashes as $hash) {
-            assert($hash instanceof Hash);
-        }
-
         $this->hashes = $hashes;
         $this->storage = $storage;
     }
