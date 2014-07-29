@@ -15,10 +15,12 @@ class ElasticSearchStorage implements Storage
 
     public function set($name, $key, $data)
     {
-        $params = array('index' => $this->index, 'type' => $name, 'id' => $key);
-        $params = array_merge($params, $data);
-
-        $this->client->index($params);
+        $this->client->index(array(
+            'index' => $this->index,
+            'type' => $name,
+            'id' => $key,
+            'body' => $data,
+        ));
     }
 
     public function get($name, $key)
