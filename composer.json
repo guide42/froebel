@@ -16,6 +16,7 @@
         "php": ">=5.3"
     },
     "require-dev": {
+        "elasticsearch/elasticsearch": "~1.0",
         "doctrine/dbal": "~2.4"
     },
     "autoload": {
