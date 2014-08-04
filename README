@@ -1,0 +1,10 @@
+Froebel
+=======
+
+This is a PoC to create a library that helps to import and search from several
+sources at the same time. Data will be hashed in several ways and be saved in
+an unique storage using the name and the hash as a key. When retrieving the
+data, different algorithms are applied to filter the results. An
+importing workflow is provider with several readers.
+
+ISC licensed.
