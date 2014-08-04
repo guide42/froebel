@@ -29,10 +29,19 @@ class SQLFileReaderTest extends PHPUnit_Framework_TestCase
             'user' => 'root',
         );
 
-        $conn = DriverManager::getConnection($params, new Configuration());
-        $conn->exec('DROP DATABASE IF EXISTS test_froebel');
-        $conn->exec('CREATE DATABASE test_froebel');
-        $conn->exec('USE test_froebel');
+        try {
+            $conn = DriverManager::getConnection($params, new Configuration());
+            $conn->exec('DROP DATABASE IF EXISTS test_froebel');
+            $conn->exec('CREATE DATABASE test_froebel');
+            $conn->exec('USE test_froebel');
+        } catch (\PDOException $e) {
+            if (strpos($e->getMessage(), 'SQLSTATE[HY000] [2002]') !== false) {
+                $this->markTestSkipped(
+                    'A local running MySQL instance is required.'
+                );
+            }
+            throw $e;
+        }
 
         return $conn;
     }
